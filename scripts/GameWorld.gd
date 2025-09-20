@@ -58,7 +58,8 @@ func _on_fire_button_pressed() -> void:
     var angle_deg := angle_box.value
     var power := power_box.value
     var castle := _get_active_castle()
-    var origin := castle.global_position + Vector2(current_player == Player.LEFT ? 60 : -60, -60)
+    var horizontal_offset := 60 if current_player == Player.LEFT else -60
+    var origin := castle.global_position + Vector2(horizontal_offset, -60)
     var angle_rad := deg_to_rad(angle_deg)
     var direction := Vector2(cos(angle_rad), -sin(angle_rad))
     if current_player == Player.RIGHT:
