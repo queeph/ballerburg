@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/sebastian/code/ballerburg/build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://main"]
+
+[ext_resource type="Script" path="res://scripts/Main.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/GameWorld.tscn" id="2"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1")
+game_world_scene = ExtResource("2")
+
+[node name="MenuLayer" type="CanvasLayer" parent="."]
+
+[node name="StartupLabel" type="Label" parent="MenuLayer"]
+text = "Ballerburg – Prototyp"
+anchor_left = 0.5
+anchor_top = 0.02
+anchor_right = 0.5
+anchor_bottom = 0.02
+offset_left = -120
+offset_right = 120
+horizontal_alignment = 1

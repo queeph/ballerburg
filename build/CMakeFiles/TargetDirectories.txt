@@ -1,0 +1,3 @@
+/home/sebastian/code/ballerburg/build/CMakeFiles/ballerburg.dir
+/home/sebastian/code/ballerburg/build/CMakeFiles/edit_cache.dir
+/home/sebastian/code/ballerburg/build/CMakeFiles/rebuild_cache.dir

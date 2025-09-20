@@ -1,0 +1,86 @@
+[gd_scene load_steps=7 format=3 uid="uid://gameworld"]
+
+[ext_resource type="Script" path="res://scripts/GameWorld.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/Castle.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/Projectile.tscn" id="3"]
+
+[sub_resource type="FastNoiseLite" id="1"]
+seed = 42
+
+[sub_resource type="Gradient" id="2"]
+colors = PackedColorArray(0.454902, 0.760784, 0.94902, 1, 0.588235, 0.866667, 0.968627, 1)
+
+[node name="GameWorld" type="Node2D"]
+script = ExtResource("1")
+projectile_scene = ExtResource("3")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -120)
+zoom = Vector2(0.8, 0.8)
+current = true
+
+[node name="Terrain" type="Node2D" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="Terrain"]
+polygon = PackedVector2Array(-512, 200, -512, 40, -240, -40, 0, -120, 240, -40, 512, 40, 512, 200)
+color = Color(0.286275, 0.560784, 0.32549, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Terrain"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Terrain/StaticBody2D"]
+polygon = PackedVector2Array(-512, 200, -512, 40, -240, -40, 0, -120, 240, -40, 512, 40, 512, 200)
+
+[node name="CastleLeft" parent="." instance=ExtResource("2")]
+position = Vector2(-320, -40)
+castle_name = "Player 1"
+max_health = 120
+
+[node name="CastleRight" parent="." instance=ExtResource("2")]
+position = Vector2(320, -40)
+castle_name = "Player 2"
+max_health = 120
+
+[node name="ProjectileLayer" type="Node2D" parent="."]
+
+[node name="WindParticles" type="Node2D" parent="."]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="HUD"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/Control"]
+alignment = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+
+[node name="TurnLabel" type="Label" parent="HUD/Control/VBoxContainer"]
+text = "Player 1 ist am Zug"
+
+[node name="WindLabel" type="Label" parent="HUD/Control/VBoxContainer"]
+text = "Wind: 0"
+
+[node name="AngleBox" type="SpinBox" parent="HUD/Control/VBoxContainer"]
+min_value = -10.0
+max_value = 80.0
+step = 1.0
+value = 45.0
+suffix = "°"
+
+[node name="PowerBox" type="SpinBox" parent="HUD/Control/VBoxContainer"]
+min_value = 10.0
+max_value = 150.0
+step = 1.0
+value = 70.0
+suffix = " m/s"
+
+[node name="FireButton" type="Button" parent="HUD/Control/VBoxContainer"]
+text = "Feuer"
+
+[node name="InfoLabel" type="Label" parent="HUD/Control/VBoxContainer"]
+text = ""

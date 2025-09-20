@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/ballerburg.dir/link.d CMakeFiles/ballerburg.dir/src/main.cpp.o CMakeFiles/ballerburg.dir/src/game.cpp.o -o ballerburg
