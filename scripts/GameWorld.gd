@@ -4,7 +4,6 @@ extends Node2D
 @export var projectile_scene: PackedScene
 @export var base_damage: int = 40
 
-const GRAVITY: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 enum Player { LEFT, RIGHT }
 
