@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://gameworld"]
+[gd_scene load_steps=8 format=3 uid="uid://gameworld"]
 
 [ext_resource type="Script" path="res://scripts/GameWorld.gd" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/Castle.tscn" id="2"]
 [ext_resource type="PackedScene" path="res://scenes/Projectile.tscn" id="3"]
+[ext_resource type="Script" path="res://scripts/ui/AngleDial.gd" id="4"]
 
 [sub_resource type="FastNoiseLite" id="1"]
 seed = 42
@@ -65,19 +66,34 @@ text = "Player 1 ist am Zug"
 [node name="WindLabel" type="Label" parent="HUD/Control/VBoxContainer"]
 text = "Wind: 0"
 
-[node name="AngleBox" type="SpinBox" parent="HUD/Control/VBoxContainer"]
+[node name="AngleContainer" type="VBoxContainer" parent="HUD/Control/VBoxContainer"]
+alignment = 0
+size_flags_horizontal = 1
+
+[node name="AngleLabel" type="Label" parent="HUD/Control/VBoxContainer/AngleContainer"]
+text = "Winkel: 45°"
+
+[node name="AngleDial" type="Control" parent="HUD/Control/VBoxContainer/AngleContainer"]
+custom_minimum_size = Vector2(120, 120)
+script = ExtResource("4")
 min_value = -10.0
 max_value = 80.0
 step = 1.0
 value = 45.0
-suffix = "°"
 
-[node name="PowerBox" type="SpinBox" parent="HUD/Control/VBoxContainer"]
+[node name="PowerContainer" type="VBoxContainer" parent="HUD/Control/VBoxContainer"]
+alignment = 0
+size_flags_horizontal = 1
+
+[node name="PowerLabel" type="Label" parent="HUD/Control/VBoxContainer/PowerContainer"]
+text = "Stärke: 70 m/s"
+
+[node name="PowerSlider" type="HSlider" parent="HUD/Control/VBoxContainer/PowerContainer"]
 min_value = 10.0
 max_value = 150.0
 step = 1.0
 value = 70.0
-suffix = " m/s"
+ticks_on_borders = true
 
 [node name="FireButton" type="Button" parent="HUD/Control/VBoxContainer"]
 text = "Feuer"

@@ -12,8 +12,10 @@ enum Player { LEFT, RIGHT }
 @onready var projectile_layer: Node2D = $ProjectileLayer
 @onready var turn_label: Label = $HUD/Control/VBoxContainer/TurnLabel
 @onready var wind_label: Label = $HUD/Control/VBoxContainer/WindLabel
-@onready var angle_box: SpinBox = $HUD/Control/VBoxContainer/AngleBox
-@onready var power_box: SpinBox = $HUD/Control/VBoxContainer/PowerBox
+@onready var angle_label: Label = $HUD/Control/VBoxContainer/AngleContainer/AngleLabel
+@onready var angle_dial: AngleDial = $HUD/Control/VBoxContainer/AngleContainer/AngleDial
+@onready var power_label: Label = $HUD/Control/VBoxContainer/PowerContainer/PowerLabel
+@onready var power_slider: HSlider = $HUD/Control/VBoxContainer/PowerContainer/PowerSlider
 @onready var fire_button: Button = $HUD/Control/VBoxContainer/FireButton
 @onready var info_label: Label = $HUD/Control/VBoxContainer/InfoLabel
 
@@ -26,8 +28,12 @@ var _active_projectile: RigidBody2D = null
 func _ready() -> void:
     _rng.randomize()
     fire_button.pressed.connect(_on_fire_button_pressed)
+    angle_dial.value_changed.connect(_update_angle_label)
+    power_slider.value_changed.connect(_update_power_label)
     castle_left.destroyed.connect(_on_castle_destroyed)
     castle_right.destroyed.connect(_on_castle_destroyed)
+    _update_angle_label(angle_dial.value)
+    _update_power_label(power_slider.value)
     start_match()
 
 func start_match() -> void:
@@ -54,8 +60,8 @@ func _update_ui() -> void:
 func _on_fire_button_pressed() -> void:
     if projectile_scene == null or _active_projectile != null:
         return
-    var angle_deg := angle_box.value
-    var power := power_box.value
+    var angle_deg := angle_dial.value
+    var power := power_slider.value
     var castle := _get_active_castle()
     var horizontal_offset := 60 if current_player == Player.LEFT else -60
     var origin := castle.global_position + Vector2(horizontal_offset, -60)
@@ -124,3 +130,9 @@ func _get_active_player_name(player: Player) -> String:
 
 func _on_castle_destroyed(castle_name: String) -> void:
     _declare_winner(castle_name)
+
+func _update_angle_label(value: float) -> void:
+    angle_label.text = "Winkel: %d°" % int(round(value))
+
+func _update_power_label(value: float) -> void:
+    power_label.text = "Stärke: %d m/s" % int(round(value))
