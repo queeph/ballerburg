@@ -80,6 +80,8 @@ min_value = -10.0
 max_value = 80.0
 step = 1.0
 value = 45.0
+start_angle_deg = 90.0
+end_angle_deg = -90.0
 
 [node name="PowerContainer" type="VBoxContainer" parent="HUD/Control/VBoxContainer"]
 alignment = 0

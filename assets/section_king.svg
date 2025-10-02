@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<svg xmlns="http://www.w3.org/2000/svg" width="56" height="64" viewBox="0 0 56 64">
+  <rect x="0" y="20" width="56" height="38" fill="#d1c7b6" stroke="#7f6b54" stroke-width="2"/>
+  <g fill="#b8a791">
+    <rect x="2" y="22" width="8" height="6"/>
+    <rect x="12" y="22" width="8" height="6"/>
+    <rect x="22" y="22" width="8" height="6"/>
+    <rect x="32" y="22" width="8" height="6"/>
+    <rect x="42" y="22" width="8" height="6"/>
+    <rect x="7" y="32" width="8" height="6"/>
+    <rect x="17" y="32" width="8" height="6"/>
+    <rect x="27" y="32" width="8" height="6"/>
+    <rect x="37" y="32" width="8" height="6"/>
+    <rect x="2" y="42" width="8" height="6"/>
+    <rect x="12" y="42" width="8" height="6"/>
+    <rect x="22" y="42" width="8" height="6"/>
+    <rect x="32" y="42" width="8" height="6"/>
+    <rect x="42" y="42" width="8" height="6"/>
+  </g>
+  <g fill="#7f2020">
+    <rect x="18.0" y="40" width="20" height="14"/>
+    <rect x="22.0" y="32" width="12" height="12" fill="#d99c2b"/>
+  </g>
+  <g fill="#f5c13b">
+    <polygon points="28.0,12 38.0,20 18.0,20"/>
+    <rect x="22.0" y="20" width="12" height="12" fill="#f5e7d3"/>
+    <rect x="24.0" y="24" width="8" height="12" fill="#5a5a98"/>
+  </g>
+</svg>
